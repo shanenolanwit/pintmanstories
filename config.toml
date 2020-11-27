@@ -1,3 +1,4 @@
 baseURL = "https://www.shanenolan.io/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Shanes Blog"
+github = "https://github.com/shanenolanwit"
