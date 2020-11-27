@@ -146,3 +146,5 @@ cd public && git add --all && git commit -m "Publishing to gh-pages (publish.sh)
 Then you can verify the site is working and use `git push --all` to push the change to github. If you don't want to check again every time, you can uncomment the `#git push --all` in the script.
 
 deployed with netlify
+mail integration with app.improvmx.com
+template taken from https://themes.gohugo.io//theme/github-style/

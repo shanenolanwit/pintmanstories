@@ -1,4 +1,14 @@
 baseURL = "https://www.shanenolan.io/"
 languageCode = "en-us"
 title = "Shanes Blog"
-github = "https://github.com/shanenolanwit"
+
+[params]
+  author = "Shane Nolan"
+  description = "Contact me"
+  github = "shanenolanwit"
+  linkedin = "shanenolanwit"
+  email = "shane@shanenolan.io"
+  utterances = "example/example.github.io"
+  url = "https://www.shanenolan.io"
+  keywords = "blog, google analytics"
+

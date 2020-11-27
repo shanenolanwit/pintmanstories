@@ -1,0 +1,19 @@
+{
+  "name": "pintmanstories",
+  "version": "1.0.0",
+  "description": "shanes blog",
+  "main": "index.js",
+  "scripts": {
+    "local": "hugo server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shanenolanwit/pintmanstories.git"
+  },
+  "author": "Shane Nolan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shanenolanwit/pintmanstories/issues"
+  },
+  "homepage": "https://github.com/shanenolanwit/pintmanstories#readme"
+}
