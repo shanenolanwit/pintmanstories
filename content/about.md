@@ -24,7 +24,7 @@ Who am I? What is my purpose in life? Why am I here? Is the world inherently mea
     - Cloud Architecture - Specifically AWS
     - Machine Learning and Conversational AI
     - DFIR and Security
-    - Adentity Access Management
+    - Identity Access Management
     - node, java, python, powershell
     - Web Automation  - selenium / testcafe (any excuse to write css selectors)
     - Regular Expressions are my favorite thing
