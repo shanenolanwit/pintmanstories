@@ -7,7 +7,7 @@ cover = "/images/avatar.png"
 summary = "In this blog post I share my experience studying for the AWS Machine Learning Specialty Exam. From what got me interested in the subject matter to what got me through the exam"
 +++
 
-I recently took the opportunity to sit the AWS Machine Specialty Learning Specialty exam, widely regarded as one of the most, if not *the* most difficult AWS exam. Gather round and let me tell you all a tale of mystery and adventure, which attempts to shine some light on this elusive certification by describing how I prepared myself for this exam, and how I ultimately achieved a passing score of 922 / 1000.
+I recently took the opportunity to sit the AWS Machine Learning Specialty exam, widely regarded as one of the most, if not *the* most difficult AWS exam. Gather round and let me tell you all a tale of mystery and adventure, which attempts to shine some light on this elusive certification by describing how I prepared myself for this exam, and how I ultimately achieved a passing score of 922 / 1000.
 
 - [Learning Materials](#LearningMaterials)
 - [Sample Exam Sources](#SampleExamSources)
