@@ -1,6 +1,6 @@
 +++
 title = "A Co-authored Blog is like a Box of Chocolates"
-date = 2020-11-27T12:22:50Z
+date = 2020-12-21T23:22:50Z
 author = "Shane Nolan"
 keywords = ["", ""]
 cover = "/images/avatar.png"
