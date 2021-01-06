@@ -1,6 +1,10 @@
 baseURL = "https://www.shanenolan.io/"
 languageCode = "en-us"
 title = "Shanes Blog"
+theme = "github-style"
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+copyright = "Shane Nolan"
 
 [params]
   author = "Shane Nolan"
@@ -11,4 +15,10 @@ title = "Shanes Blog"
   utterances = "example/example.github.io"
   url = "https://www.shanenolan.io"
   keywords = "blog, google analytics"
+  rss = true
+  lastmod = true
+  favicon = "/images/github.png"
+  location = "Ireland"
 
+[frontmatter]
+  lastmod = ["lastmod", ":fileModTime", ":default"]

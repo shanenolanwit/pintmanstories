@@ -5,6 +5,7 @@ author = "Shane Nolan"
 keywords = ["", ""]
 cover = "/images/avatar.png"
 summary = "A placeholder blog that lists potential future blogs"
+draft = "true"
 +++
 
 The following is a list of potential blog topics that interest me and I hope to write in the near future.
