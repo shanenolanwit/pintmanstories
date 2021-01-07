@@ -47,7 +47,7 @@ speculative investments antique typewriters
 calculators still risky long term
 ```
 
-Jump over to the github repo and take a look at the code and the graphs, it's presented as a jupyter notebook so you can see the result of each piece of code as 
+Jump over to the github [repo](https://github.com/shanenolanwit/tunnel-snakes-101/blob/master/OffLicenceNLG.ipynb) and take a look at the code and the graphs, it's presented as a jupyter notebook so you can see the result of each piece of code as 
 it's executed. I've added comments and commentary so hopefully you can get a good understanding of whats going on. This work was done prior to my AWS Machine Learning journey so I'll probably revisit at some stage, hopefully improve the results and maybe even get another blog post out of it. Until then, see you guys on the Nasdaq, or whatever.
 
 ![teamwork](/images/guywithmoney.png)
