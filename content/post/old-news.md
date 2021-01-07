@@ -22,7 +22,7 @@ In the end, I went for the third option, sure driving around southern Italy with
 I found a blog template that uses Hugo templating to define new blogs and deployed it using netlify, bought myself a new shiny **io** domain and this site was born. 
 
 ## But what about the amazing blog posts on the old site? 
-I had a total of 4 blogs on the old site. I will migrate them here, if you are one of the few who have already read them, I hear reading a blog a second time is the key to a happy life. If you haven't seen them before, pretend you never read this disclaimer.
+I had a total of 3 blogs on the old site. I will migrate them here, if you are one of the few who have already read them, I hear reading a blog a second time is the key to a happy life. If you haven't seen them before, pretend you never read this disclaimer.
 
 ## What will happen chickengoujons.ie?
 It was the wrong site to test out react with. Worry not though, I'll keep the domain and some day I'll get around to building a site worthy of such an amazing domain name. 
