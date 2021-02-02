@@ -127,7 +127,7 @@ Shanes Wonderful Question Answering Regex Machine
 Question: who went to paris?
 anna
 ======================
-Question: where did anna go on monday
+Question: where did anna go on friday
 paris
 ======================
 Question: when did anna go to paris
@@ -137,7 +137,6 @@ Question: what city did anna visit
 paris
 ======================
 Question: what day did anna go to paris
-here
 friday
 ======================
 Question: what restaurant did joe visit
