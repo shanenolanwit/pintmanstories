@@ -11,7 +11,7 @@ summary = "An introduction to Natural Language Processing (NLP) and an exercise 
 Back in the days when you could go into a shop with a pound and come out with a bag of monster munch, a can of coke,
 and still have a few pence left in your back pocket, most text mining applications relied on a technique known as bag-of-words.
 This technique basically took all the words in a given piece of text, disregarding their order, not caring about their context and used 
-each words frequency in order to classify the entire document using predefined classes, or just clustering them using natural groupings.
+each words frequency to classify the entire document using predefined classes.
 
 This worked great for simple tasks like spam filtering - does my bag contain viagra or a Nigerian prince? If so, you've got yourself a big ol bag of spam, 
 time to chuck it in the bin. (Top tip: If you have recently bought viagra from a Nigerian website and received no confirmation email - try checking your spam box).
