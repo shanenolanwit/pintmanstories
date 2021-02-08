@@ -7,7 +7,7 @@ cover = "/images/avatar.png"
 summary = "AWS ML Specialty Study Points - A brain dump of topics to direct study and identify knowledge gaps"
 +++
 
-Following on from my [Guide to the AWS Machine Learning Specialty](/posts/aws-ml-exam-guide) I want to share this list which is based on what I feel are the most important terms and concepts to understand before tackling the ML specialty exam. You should be able to scan this list and comfortably explain and/or discuss each point.
+Following on from my [Guide to the AWS Machine Learning Specialty](/post/aws-ml-exam-guide) I want to share this list which is based on what I feel are the most important terms and concepts to understand before tackling the ML specialty exam. You should be able to scan this list and comfortably explain and/or discuss each point.
 
 ## General ML Foundations
  - Supervised / semi supervised / unsupervised / transfer /  reinforcement learning

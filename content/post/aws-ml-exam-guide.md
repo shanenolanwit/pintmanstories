@@ -23,7 +23,7 @@ Let's take another trip forward through time and space, all the way to late 2020
 
 I would estimate that I spent approximately 16 weeks preparing for the exam. This involved roughly 12 weeks studying ML Theory and 4 weeks focusing on AWS ML services. During these 16 weeks I also took 4 practice exams, and I would estimate that I took each exam 3 to 4 times. A lot of guides I've read suggest you take the exams over and over until you're seeing machines learning in your sleep, however I don't subscribe to that learning model, I didn't want to fall into the trap of just memorizing a relatively small subset of possible questions. I feel if you have an understanding of the fundamental concepts, you'll never have to use your memory again (except for some of the equations I'm going to tell you to learn off later). Over the course of 16 weeks my average exam score went from 40% to 90%.
 
-The rest of this blog covers the [learning materials](#LearningMaterials) I used, where I found good [sample exams](#SampleExamSources), a little bit of discussion [about the exam](#AboutTheExam) itself and a [TLDR](#TopTips) that lists my top tips for anyone considering sitting the exam. In an [accompanying post](/posts/aws-ml-study-points) I have also put compiled a more comprehensive list of high level study points, which is more of a brain dump of topics which can be used to focus your study and identify any knowledge gaps.
+The rest of this blog covers the [learning materials](#LearningMaterials) I used, where I found good [sample exams](#SampleExamSources), a little bit of discussion [about the exam](#AboutTheExam) itself and a [TLDR](#TopTips) that lists my top tips for anyone considering sitting the exam. In an [accompanying post](/post/aws-ml-study-points) I have also put compiled a more comprehensive list of high level study points, which is more of a brain dump of topics which can be used to focus your study and identify any knowledge gaps.
 
 *There are no referral links on any of the links listed below, and I have no financial interest in any of these resources. I'm recommending them because I have used them and found that they worked for me. I'm sure there are better resources out there, and I can confirm that there are a lot of resources out there that are much worse.*
 
@@ -94,7 +94,7 @@ d) GuardDuty
 # Top Tips
 <a name="TopTips"></a>
 
-And so we've made it to my Top Tips, Tricks And Tactics For Training Yourself To Think Like A Total Machine Learning Legend. Remember to learn at your own pace and adapt to what works best for you, but I hope these tips will at least help you to structure your own study plan and revision sessions. Make sure to also check out my [high level study points](/posts/aws-ml-study-points). By the time you are ready to sit the exam, you should be able to go through that list and comfortably discuss and/or explain each point or topic.
+And so we've made it to my Top Tips, Tricks And Tactics For Training Yourself To Think Like A Total Machine Learning Legend. Remember to learn at your own pace and adapt to what works best for you, but I hope these tips will at least help you to structure your own study plan and revision sessions. Make sure to also check out my [high level study points](/post/aws-ml-study-points). By the time you are ready to sit the exam, you should be able to go through that list and comfortably discuss and/or explain each point or topic.
 
 1. Know all the AWS black box ML services at a high level
     - What are they used for (have sample use cases ready to go)
