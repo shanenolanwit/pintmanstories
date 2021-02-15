@@ -60,7 +60,7 @@ I'm doing great thanks
 Your input ->  what is the price of this car                                                                              
 home data info
 ```
-It started off so well but went downhill quickly. To a human, the questions being asked may all seem similar but our model doesn't have a complete vocabulary and certainly doesn't understand all the nuances of English grammar. This is where our NLG program comes in. Enter my super simple dataset extender program - [superfluous]([here](https://github.com/shanenolanwit/superfluous)). 
+It started off so well but went downhill quickly. To a human, the questions being asked may all seem similar but our model doesn't have a complete vocabulary and certainly doesn't understand all the nuances of English grammar. This is where our NLG program comes in. Enter my super simple dataset extender program - [superfluous](https://github.com/shanenolanwit/superfluous). 
 
 ## Please get to the point
 By utilising the popular Wordnet database we can take a simple utterance as a base and create a number of similar sentences. This is done by analysing the sentence, removing stop words, and then taking the remaining nouns, verbs, adjectives and building a list of synonyms for each. Its then just a matter of applying a simple mathematical construct to the lists to generate the variants. Which mathematical construct? Our favourite of course - Carthesian product
