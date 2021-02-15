@@ -1,10 +1,10 @@
 +++
-title = "Using Wordnet to say things gooder"
+title = "Using Wordnet to Say Things Gooder"
 date = 2021-02-15T11:35:09Z
 author = "Shane Nolan"
 keywords = ["", ""]
 cover = "/images/avatar.png"
-summary = "Using Wordnet and Rasa to check if too many cooks spoil the intent detection"
+summary = "Using Wordnet and Rasa to check if too many cooks spoil the intent detection. Can we use NLG tricks to generate rich data sets?"
 
 +++
 ## Introduction 
