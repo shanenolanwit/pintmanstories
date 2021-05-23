@@ -28,8 +28,8 @@ paris-france
 ```
 
 ## Can it be done with a regex - YES
-If you like your solutions quick and dirty (emphasis on the dirty), then we can do the following.  
- - echo our json 
+If you like your solutions quick and dirty (emphasis on the dirty), then we can do the following.
+ - echo our json
  - pipe the output to a grep command
  - use greps -o flag to print only the matched (non-empty) parts of a matching line, with each such part on a separate output line
  - use a capture group with a repeating character sequence to pull out the values which contain lower case letters and hyphens `([a-z-]*)`
@@ -41,8 +41,8 @@ echo [{"Name":"America","Value":"dallas-texas"},{"Name":"Europe","Value":"paris-
 I warned you it was dirty. Time to take a shower and try another approach.
 
 ## Should it be done with a regex - NO
-I'll take this use case to introduce you all to a friend of mine called [jq](https://stedolan.github.io/jq/), a lightweight json parser that can do incredibly cool shit with json data. Cool here being a subjective term, if you're the kind of person who enjoys free soloing blindfolded up K2 then you might not get the same buzz off of jq that I do. But onwards with the blog post, once you've installed jq you can achieve the exact same result as before, but using much more simple logic.  
- - echo our json 
+I'll take this use case to introduce you all to a friend of mine called [jq](https://stedolan.github.io/jq/), a lightweight json parser that can do incredibly cool shit with json data. Cool here being a subjective term, if you're the kind of person who enjoys free soloing blindfolded up K2 then you might not get the same buzz off of jq that I do. But onwards with the blog post, once you've installed jq you can achieve the exact same result as before, but using much more simple logic.
+ - echo our json
  - pipe the output to a jq command
  - use jqs -r flag to write directly to standard output rather than formatting results as JSON strings (with quotes)
  - specify the items you wish to capture using a jsonpath-esque pattern (so root followed by the Value key for each array item) `.[].Value`
