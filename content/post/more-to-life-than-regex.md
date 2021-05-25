@@ -34,12 +34,28 @@ If you like your solutions quick and dirty (emphasis on the dirty), then we can 
  - pipe the output to a grep command
  - use greps -o flag to print only the matched (non-empty) parts of a matching line, with each such part on a separate output line
  - use a capture group with a repeating character sequence to pull out the values which contain lower case letters and hyphens `([a-z-]*)`
+ - split the results on colon taking the second group
  - sort the results and output the unique values
 
 ```bash
 echo [{"Name":"America","Value":"dallas-texas"},{"Name":"Europe","Value":"paris-france"}] | grep -o 'Value:\([a-z-]*\)' | cut -d: -f 2 | sort | uniq
 ```
+
+or if you prefer a zsh friendly alternative 
+
+ - echo our json
+ - pipe the output to a grep command
+ - use greps -o flag to print only the matched (non-empty) parts of a matching line, with each such part on a separate output line
+ - use a capture group with a repeating character sequence to pull out the values which contain lower case letters and hyphens `([a-z-]*)`
+ - split the results on colon taking the second group
+ - trim the double quotes
+ - list unique
+
+```bash
+echo '[{"Name":"America","Value":"dallas-texas"},{"Name":"Europe","Value":"paris-france"}]' | grep -o '"Value":"\([a-z-]*\)"' | cut -d":" -f 2 | tr -d '"' | uniq
+```
 I warned you it was dirty. Time to take a shower and try another approach.
+
 
 ## Should it be done with a regex - NO
 I'll take this use case to introduce you all to a friend of mine called [jq](https://stedolan.github.io/jq/), a lightweight json parser that can do incredibly cool shit with json data. Cool here being a subjective term, if you're the kind of person who enjoys free soloing blindfolded up K2 then you might not get the same buzz off of jq that I do. But onwards with the blog post, once you've installed jq you can achieve the exact same result as before, but using much more simple logic.
