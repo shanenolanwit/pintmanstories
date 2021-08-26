@@ -12,7 +12,7 @@ summary = "You must not stray from the path of the dog - ML 101"
 In a previous life the possibility of getting to design and build an identity management system was always on my horizon. I recently revisited the idea as I believe it poses lots of interesting challenges that I did not fully appreciate at the time. One of the challenges involved in managing a 
 system where users are constantly joining, moving and leaving, is correctly allocating roles to users who have a wide variety of permissions but no explicitly defined role. Traditional rule based logic may fail to correctly allocate roles if user permissions are not uniform. However, machine learning can help us group users into clusters based on their permissions, or we can use classification techniques to recommend suitable roles. 
 One of the techniques we can use to determine how to classify a user is calculating the similarity of a user 
-and a prototypical user of each available class. Similarity can be measured in a variety of ways, most notably, euclidean distance and/or cosine distance.
+to a prototypical user of each available class. Similarity can be measured in a variety of ways, most notably, euclidean distance and/or cosine distance.
 
 ## Dimensional Chaos
 Don't listen to your friends when they tell you there is a single best way to calculate the distance between points in n-dimensional space.
@@ -28,6 +28,7 @@ Document five contains 8 occurrences of dog, and 60 occurrences of cat
 ```
 So the simple solution is whichever number is greater determines the type of doc? Sounds good in this document, but this is a 2 dimensional solution and can not scale. 
 As simple humans we observe the world in 3 dimensional space, but in reality we encounter a lot of n-dimensional problems. Think of the last time you played Top Trumps - you can't judge a dinosaur by its *killer rating* alone, you need to factor in things like height, weight, length, intelligence and age. To plot these points on a graph you would need a 6 dimensional graph. We can do the maths but we simply can not display 6 dimensions in a 3 dimensional world. 
+
 ![toptrumps](/images/toptrumps.jpeg)
 
 If you say so Shane . . 
@@ -38,15 +39,15 @@ As we mentioned before, we can't visualize n-dimensional space but we can still 
 I'm not a mathematician, in fact, I had to use autocorrect to even spell mathematician so my definitions may not be textbook, but they might help you understand enough to go 
 research and understand the grown up definition.
 
-**Euclidean distance** is the `as the crow flies` distance between two points in space. If you grabbed your rule and pencil, and connected two points, the distance of that connecting line is your euclidean distance.
+**Euclidean distance** is the `as the crow flies` distance between two points in space. If you grabbed your ruler and your pencil, and connected two points, the distance of that connecting line is your euclidean distance.
 
-**Cosine distance** measures the cosine of the angle between lines drawn from two given points to a common origin, or more simply put - given an origin how far do you have to stray from the path to one point to get to the other. It is the great equalizer when the magnitude of a points values are not important.
+**Cosine distance** measures the cosine of the angle between lines drawn from two given points to a common origin, or more simply put - given an origin how far do you have to stray from the path to one point to end up at the other. It is the great equalizer when the magnitude of a points values are not important.
 
 ![euccos](/images/euccos.png)
 
 The above is a visual representation of euclidean distance (d) and cosine distance (θ). While cosine looks at the angle difference between two points from a common origin, euclidean distance measures the physical distance between the points themselves.
 
-Alright, forget about the dinosaurs, lets jump back to the cats and dogs. Lets plot some data. The python snippets use matplotlib to graph our data points.
+Alright, forget about the dinosaurs, lets jump back to the cats and dogs. Lets plot some data. The following python snippets use matplotlib to graph our data points.
 ```
 import matplotlib.pyplot as plt
 
