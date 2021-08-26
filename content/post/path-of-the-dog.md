@@ -47,7 +47,7 @@ research and understand the grown up definition.
 
 The above is a visual representation of euclidean distance (d) and cosine distance (θ). While cosine looks at the angle difference between two points from a common origin, euclidean distance measures the physical distance between the points themselves.
 
-Alright, forget about the dinosaurs, lets jump back to the cats and dogs. Lets plot some data. The following python snippets use matplotlib to graph our data points.
+Alright, forget about the dinosaurs, lets jump back to the cats and dogs. Lets plot some data. The following python snippets have been taken from my accompying python notebook which can be found [here](https://github.com/shanenolanwit/pintmanstories/blob/master/resources/notebooks/catsanddogs.ipynb) and uses matplotlib to graph our data points.
 ```
 import matplotlib.pyplot as plt
 
