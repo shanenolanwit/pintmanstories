@@ -10,9 +10,9 @@ summary = "You must not stray from the path of the dog - ML 101"
 
 ## Introduction
 I once walked a path where the possibility of getting to design and build an identity management system was always on the horizon. I recently revisited the idea as I believe it poses lots of interesting challenges. One of the challenges involved in managing a 
-system where users are constantly joining, moving and leaving is correctly allocating roles to users who have a wide variety of permissions but no explicitly defined role. For example you might need to aggregate users from a legacy system into your current system but the permissions don't align perfectly with your defined roles so traditional rule based logic may fail to identify the correct (if any) role. Machine learning can help us group users into clusters based on their permissions, or we can use 
+system where users are constantly joining, moving and leaving, is correctly allocating roles to users who have a wide variety of permissions but no explicitly defined role. For example you might need to aggregate users from a legacy system into your current system but the permissions don't align perfectly with your defined roles, so traditional rule based logic may fail to identify the correct (if any) role. Machine learning can help us group users into clusters based on their permissions, or we can use 
 classification techniques to recommend suitable roles. One of the techniques we can use to determine how to classify a user is calculating the similarity of a user 
-and a prototypical user of each available class. One of the ways we can do this using cosine distance.
+and a prototypical user of each available class. One of the ways we can do this is using cosine distance.
 
 ## Dimensional Chaos
 Don't be listening to your friends when they tell you there is a single best way to calculate the distance between two points in n-dimensional space.
@@ -34,7 +34,7 @@ If you say so Shane . .
 
 
 ## So what is the solution
-As we mentioned before, we can't visualize n-dimensional space we can still conceptualize the space and perform mathematical operations that scale to meet the number of dimensions. One of these operations is Euclidean space, another is Cosine distance. Lets use some simple pictures in a dimension we can draw to show how these calculations work and why one can be better than the other. We'll then show how the calculations can easily be adapted to n-dimensions and then we'll all go get some rest.
+As we mentioned before, we can't visualize n-dimensional space but we can still conceptualize it and perform mathematical operations that scale to meet the number of dimensions. One of these operations is Euclidean distance, another is Cosine distance. Lets use some simple pictures in a dimension we can draw to show how these calculations work and why one can be better than the other. We'll then show how the calculations can easily be adapted to n-dimensions and then we'll all go get some rest.
 I'm not a mathematician, in fact, I had to use autocorrect to even spell mathematician so my definitions may not be textbook, but they might help you understand enough to go 
 research and understand the grown up definition.
 
