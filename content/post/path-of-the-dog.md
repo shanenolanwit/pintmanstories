@@ -80,11 +80,13 @@ But what would have happened if we used cosine distance ?
 
 ![pathofthedog4](/images/pathofthedog4.png)
 
-| point|label|   distance |
-| ---|--|--|
-|    1| adult  | 0.011186|
-|    4| young |   0.015582|
-|    0| mid |  0.018214|
+
+| point    | label | distance  |
+| -----------|-----------|------------|
+| 1 | adult | 0.011 |
+| 4 | young | 0.015 |
+| 0 | mid | 0.018 |
+
 
 We would have labelled our tiny dog as an adult ! The path from our origin to young was a much bigger diversion from the path to our mystery point than the path from our origin to adult. This makes sense when we look back to the earlier definition about cosine not really caring about the magnitude of our values. When looking at labradors, it seems obvious and logical that the longer and heavier the labrador is, the older it is.
 
@@ -112,11 +114,13 @@ Using straight lines, we'll connect our mystery point to each of the other point
 
 ![pathofthedog6](/images/pathofthedog6.png)
 
-| point|label|   distance |
-| ---|--|--|
-|    0| cat |   20.615528|
-|    1| cat |  24.020824|
-|    3| dog  | 35.128336|
+
+| point    | label | distance  |
+| -----------|-----------|------------|
+| 0 | cat | 20.6 |
+| 1 | cat | 24 |
+| 3 | dog | 35.1 |
+
 
 Based on these results, we can see the nearest point is point 0 which if we check our table above, is labelled as `cat`. This is *not* a good prediction ! Why would a book titled `how to pet a dog` be labelled as `cat`?
 
@@ -124,11 +128,12 @@ So what would have happened if we had used cosine distance instead?
 
 ![pathofthedog7](/images/pathofthedog7.png)
 
-| point|label|   distance |
-|---|--|--|
-|    3| dog  | 0.002102|
-|    0| cat |   0.386059|
-|    1| cat |  0.571914|
+
+| point    | label | distance  |
+| -----------|-----------|------------|
+| 3 | dog | 0.002 |
+| 0 | cat | 0.386 |
+| 1 | cat | 0.571 |
 
 
 This looks good, the nearest point is point 3 which is labelled as `dog`. This means we did not have to stray far from the path of the dog to end up at our mystery point.
