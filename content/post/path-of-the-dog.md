@@ -9,33 +9,10 @@ summary = "You must not stray from the path of the dog - ML 101"
 +++
 
 ## Introduction
-In a previous life the possibility of getting to design and build an identity management system was always on my horizon. I recently revisited the idea as I believe it poses lots of interesting challenges that I did not fully appreciate at the time. One of the challenges involved in managing a 
-system where users are constantly joining, moving and leaving, is correctly allocating roles to users who have a wide variety of permissions but no explicitly defined role. Traditional rule based logic may fail to correctly allocate roles if user permissions are not uniform. However, machine learning can help us group users into clusters based on their permissions, or we can use classification techniques to recommend suitable roles. 
-One of the techniques we can use to determine how to classify a user is calculating the similarity of a user 
-to a prototypical user of each available class. Similarity can be measured in a variety of ways, most notably, euclidean distance and/or cosine distance.
-
+Do you often find yourself wondering what is the difference between euclidean distance and cosine distance? How many sleepless nights have you had trying to classify your books as either cat books or dog books? Do you have difficulty estimating a dogs age? Do you like vague quotes, badly phrased answers and reading python scripts Well then my friend, if the path be beautiful, let us not ask where it leads . . 
 ## Dimensional Chaos
-Don't listen to your friends when they tell you there is a single best way to calculate the distance between points in n-dimensional space.
-Using a simple example of document comparison, lets say we have a datastore of documents, some documents are about dogs, and some are about cats. When a new document 
-is uploaded, we want to automatically determine which kind of document this is. We either don't have the time to read it, or there are no pictures of dogs, so we're just 
-not interested in reading it. Instead we run it through some program which extracts the text and calculates the word frequency to determine which type of document it is. If it has more mentions of `dog` then its a doggy doc, if it has more mentions of `cat` then its a kitty cat doc.
-```
-Document one contains no occurrences of dog, and no occurrences of cat
-Document two contains 10 occurrences of dog, and 2 occurrences of cat
-Document three contains 4 occurrences of dog, and 1 occurrences of cat
-Document four contains 5 occurrences of dog, and 25 occurrences of cat
-Document five contains 8 occurrences of dog, and 60 occurrences of cat
-```
-So the simple solution is whichever number is greater determines the type of doc? Sounds good in this document, but this is a 2 dimensional solution and can not scale. 
-As simple humans we observe the world in 3 dimensional space, but in reality we encounter a lot of n-dimensional problems. Think of the last time you played Top Trumps - you can't judge a dinosaur by its *killer rating* alone, you need to factor in things like height, weight, length, intelligence and age. To plot these points on a graph you would need a 6 dimensional graph. We can do the maths but we simply can not display 6 dimensions in a 3 dimensional world. 
+Don't listen to your friends when they tell you there is a single best way to calculate the distance between points in n-dimensional space. Depending on the problem, different measures will produce better results, and having the ability to pull these solutions our of your back pocket will serve you well. The following examples run through two scenarios, the first scenario details a problem where `euclidean` distance is the right solution, the second scenario details a problem where `cosine` distance is the correct solution. For all the maths and python code, I have my accompanying notebook stored[here](https://github.com/shanenolanwit/pintmanstories/blob/master/resources/notebooks/pathofthedog.ipynb)
 
-![toptrumps](/images/toptrumps.jpeg)
-
-If you say so Shane . . 
-
-
-## So what is the solution
-As we mentioned before, we can't visualize n-dimensional space but we can still conceptualize it and perform mathematical operations that scale to meet the number of dimensions. Which brings us back to Euclidean and Cosine distances. Lets use some simple pictures in a dimension we can draw to show how these calculations work and why one can be better than the other. We'll then show how the calculations can easily be adapted to n-dimensions and then we'll all go get some rest.
 I'm not a mathematician, in fact, I had to use autocorrect to even spell mathematician so my definitions may not be textbook, but they might help you understand enough to go 
 research and understand the grown up definition.
 
@@ -45,184 +22,119 @@ research and understand the grown up definition.
 
 ![euccos](/images/euccos.png)
 
-The above is a visual representation of euclidean distance (d) and cosine distance (θ). While cosine looks at the angle difference between two points from a common origin, euclidean distance measures the physical distance between the points themselves.
+The above is a visual representation of euclidean distance (d) and cosine distance (θ). While cosine looks at the angle difference between two points from a common origin, euclidean distance measures the physical distance between the points.
 
-Alright, forget about the dinosaurs, lets jump back to the cats and dogs. Lets plot some data. The following python snippets have been taken from my accompying python notebook which can be found [here](https://github.com/shanenolanwit/pintmanstories/blob/master/resources/notebooks/catsanddogs.ipynb) and uses matplotlib to graph our data points.
-```
-import matplotlib.pyplot as plt
+### Cosine distance? Surely you mean cosine similarity?
+Sure look, you read it whatever way you want. Generally speaking a high cosine similarity score means two documents are similar, I've just subtracted the similarity score from 1 to give me the distance (or measure of how different they are). 
 
-x = [0, 10, 4, 5, 8]
-y = [0, 2, 1, 25, 60]
+## Why not just look at points on a graph and kinda eyeball it
+Sounds good in theory, but this solution can only work in a 1 - 3 dimensional solution and can not scale. 
+As simple humans we observe the world in 3 dimensional space, but in reality we encounter a lot of n-dimensional problems. Think of the last time you played Top Trumps - you can't judge a dinosaur by its *killer rating* alone, you need to factor in things like height, weight, length, intelligence and age. To plot these points on a graph you would need a 6 dimensional graph. We can do the maths but we simply can not display 6 dimensions in a 3 dimensional world. 
 
-plt.xlabel('dog')
-plt.ylabel('cat')
+![toptrumps](/images/toptrumps.jpeg)
 
-plt.scatter(x, y)
-```
-![catdogs1](/images/catdogs1.png)
-
-In the diagram above we have a document at (4,1) which represents a document about a dog (4 mentions of a dog, 1 mention of a cat), we also have a document at (8,60) which represents a document about a cat (8 mentions of a dog, 60 mentions of a cat). So lets take a look at the document at (5,25) . . thats 5 mentions of a dog, 25 mentions of a cat. Our intuition tells us this is a document about a cat, but if we judge a documents class by the euclidean distance to its prototypical document, we actually get the opposite answer.
-
-```
-x = [0, 10, 4, 5, 8]
-y = [0, 2, 1, 25, 60]
-
-plt.xlabel('dog')
-plt.ylabel('cat')
-
-plt.scatter(x, y)
-plt.plot([4,5], [1,25], color="blue",  label="distance to dog")
-plt.plot([5,8], [25,60], color="red", label="distance to cat")
-
-dist1 = euclidean((4,5), (1,25)) 
-dist2 = euclidean((5,8), (25,60))
-
-print(f"distance to dog {dist1}")
-print(f"distance to cat {dist2}")
-
-plt.legend()
-plt.show()
-```
-
-![catdogs2](/images/catdogs2.png)
-
-While it may be true that the word frequency values of the `x` document are closer to that of the `dog` document, the length of the document should not determine its context, , thus, highlighting the weakness in using Euclidean distance. We need to forget about the magnitude of the words, so we switch to cosine distance - if we observe the path from the origin to the dog document, how far must we stray from the path of the dog to reach the point `x`, similarly how far must we stray from the path of the cat to get to `x`. Lets plots these paths and observe the results.
-
-```
-x = [0, 10, 4, 5, 8]
-y = [0, 2, 1, 25, 60]
-
-plt.xlabel('dog')
-plt.ylabel('cat')
-
-plt.scatter(x, y)
-plt.plot([0,4], [0,1], color="blue",  label="dog")
-plt.plot([0,5], [0,25], color="black", linestyle='--', label="x")
-plt.plot([0,8], [0,60], color="red", label="cat")
-
-plt.legend()
-plt.show()
-
-dist1 = cosine((4,5), (1,25))
-dist2 = cosine((5,8), (25,60))
-
-print(f"distance to dog {dist1}")
-print(f"distance to cat {dist2}")
-```
-
-![catdogs3](/images/catdogs3.png)
-
-This is more like it. If you were standing at the origin and looking down the path to `x` you would have to turn much further to the right to follow the path of the dog, than you would have to turn left to follow the path of the cat. This observation results in `x` being correctly classified as cat.
-
-## How did we end up here
-Ok so we've discussed invisible dimensions, dinosaurs, cats and dogs, back to our unknown user being added to our identity management system, we use their permissions to build an n dimensional matrix, and use the cosine difference between them and the prototypical employees of each department to determine which role they should be assigned. These users have a very small number of properties so could probably be determined by eye, but the basic design concept is built with scaling in mind.
-
-This snippet is a simple NodeJS representation of the cosine distance
-```
-module.exports = (A,B) => {
-    let dotproduct = 0;
-    let mA = 0;
-    let mB = 0;
-    for(i = 0; i < A.length; i++){ 
-        dotproduct += (A[i] * B[i]);
-        mA += (A[i]*A[i]);
-        mB += (B[i]*B[i]);
-    }
-    mA = Math.sqrt(mA);
-    mB = Math.sqrt(mB);
-    const similarity = (dotproduct)/((mA)*(mB))
-    return 1 - similarity;
-}
-```
-
-Proof of concept Identity class
-```
-module.exports = class Identity {
-    constructor(config){
-        this.config = config;
-    }
-
-    get(prop){
-        return this.config[prop] ? 1 : 0
-    }
-
-    buildMatrix(){
-        return [
-            this.get('mysql_read'),
-            this.get('mysql_write'),
-            this.get('mysql_admin'),
-            this.get('ddb_read'),
-            this.get('ddb_write'),
-            this.get('ddb_admin'),
-            this.get('hubspot_read'),
-            this.get('hubspot_write'),
-            this.get('hubspot_admin'),
-            this.get('sales_dept'),
-            this.get('tech_dept'),
-            this.get('hr_dept'),
-        ]
-    }
-}
-```
-
-Running some comparisons
-```
-const diff = require('./cosineDistance');
-const Identity = require('./Identity')
-
-const hubspotUser = new Identity({
-    hubspot_read: 1, hubspot_write: 1, sales_dept: 1
-})
-
-const hubspotAdmin = new Identity({
-    hubspot_read: 1, hubspot_write: 1, hubspot_admin: 1, sales_dept: 1
-})
-
-const techGuy = new Identity({
-    mysql_read: 1, mysql_write: 1, ddb_read: 1, ddb_write: 1, tech_dept: 1 
-})
-
-const techAdmin = new Identity({
-    mysql_read: 1, mysql_write: 1, ddb_read: 1, ddb_write: 1, mysql_admin: 1, ddb_admin: 1, hubspot_admin: 1, tech_dept: 1
-})
-
-console.log(diff(hubspotUser.buildMatrix(),hubspotAdmin.buildMatrix()))
-console.log(diff(techGuy.buildMatrix(),hubspotAdmin.buildMatrix()))
-console.log(diff(techGuy.buildMatrix(),techAdmin.buildMatrix()))
-console.log(diff(techAdmin.buildMatrix(),hubspotAdmin.buildMatrix()))
-
-const unknownUser = new Identity({
-    hubspot_write: 1, mysql_read: 1, sales_dept: 1
-})
-
-console.log('unknown user')
-
-console.log(diff(unknownUser.buildMatrix(),hubspotUser.buildMatrix()))
-console.log(diff(unknownUser.buildMatrix(),hubspotAdmin.buildMatrix()))
-console.log(diff(unknownUser.buildMatrix(),techGuy.buildMatrix()))
-console.log(diff(unknownUser.buildMatrix(),techAdmin.buildMatrix()))
+If you say so Shane . . 
 
 
-// prints
-// 0.1339745962155613
-// 1
-// 0.20943058495790523
-// 0.8232233047033631
-// unknown user
-// 0.33333333333333326
-// 0.42264973081037416
-// 0.7418011102528389
-// 0.7958758547680685
+## Chapter one - labradors
+In this example we have a list of labradors, represented as a matrix. Each row represents a single dog, with each column representing one of the dogs attributes - namely Weight, Length and Age, where age can be one of three possible values - 0 (young), 1 (mid) or 2 (adult)
 
-```
+|index|weight|	length|	label|
+|-----|------|--------|------|
+|0|	6.6|	6.2|	1|
+|1|	9.7|	9.9|	2|
+|2|	8.0|	8.3|	2|
+|3|	6.3|	5.4|	1|
+|4|	1.3|	2.7|	0|
+|5|	2.3|	3.1|	0|
+|6|	6.6|	6.0|	1|
+|7|	6.5|	6.4|	1|
+|8|	6.3|	5.8|	1|
+|9|	9.5|	9.9|	2|
+|10|	8.9|	8.9|	2|
+|11|	8.7|	9.5|	2|
+|12|	2.5|	3.8|	0|
+|13|	2.0|	3.1|	0|
+|14|	1.3|	1.8|	0|
 
-Which produces two outputs. The first set outputs compares users from known classes - a hubspot user and a hubspot admin (0.13 quite similar), it then compares a tech guy and a hubspot admin (1 which is not similar at all), it compares the tech guy with the tech admin (0.23 quite similar), and then it compares the tech admin and hubspot admin (0.82 not very similar).
+We'll plot our points on a graph
 
-It then compares an unknown user with each know user class. Again because we have very few properties we can probably make an educated guess about what role someone with hubspot write access, mysql read access who works in the sale department should be given, but we'll go through the exercise anyway. The unknown user is compared to the hubspot user (0.33 very similar), the hubspot admin (0.4 not so similar but not a million miles off), the tech guy (0.74 not at all similar), and the tech admin (0.79 even further away again).
+![pathofthedog1](/images/pathofthedog1.png)
 
-This can be interpreted as - the minimum distance between this unknown user and a known user is 0.33 which is the distance between this user and the hubspot user, thus we would recommend that this new user be given the hubspot user role. We could also add warnings to say that the score is not perfect so the user may be missing a permission or may have some excess privileges. 
+Next we'll take one sample from each cluster (points 0,1 and 4), and we'll take another point at random (point 14), strip its label and see if we can figure it out again using some fun maths.
+
+![pathofthedog2](/images/pathofthedog2.png)
+
+Using straight lines, we'll connect our mystery point to each of the sample points, and essentially make a prediction based on the length of the line.
+
+![pathofthedog3](/images/pathofthedog3.png)
+
+| point|label|   distance |
+|---|--|--|
+|    4| young |   0.900000|
+|    0| mid |  6.888396|
+|    1| adult  | 11.669190|
+
+Based on these results, we can see the nearest point is point 4 which if we check our table above, is labelled as 0 (young). This is a correct prediction !
+
+But what would have happened if we used cosine distance ?
+
+![pathofthedog4](/images/pathofthedog4.png)
+
+| point|label|   distance |
+|---|--|--|
+|    1| adult  | 0.011186|
+|    4| young |   0.015582|
+|    0| mid |  0.018214|
+
+We would have labelled our tiny dog as an adult ! The path from our origin to young was a much bigger diversion from the path to our mystery point than the path from our origin to adult. This makes sense when we look back to the earlier definition about cosine not really caring about the magnitude of our values. When looking at labradors, it seems obvious and logical that the longer and heavier the labrador is, the older it is.
+
+
+## Chapter two - a day at the library
+
+So now you're thinking, `perfect, lettings throw this cosine distance stuff in the bin and just euclidean distance all the things`, but unfortunately you'd be in big trouble if you done that, because now you need to classify your book collection and euclidean distance is about to hit you hard. Lets take this sample book collection
+
+| document    | dog count | cat count  | label |
+| -----------|-----------|------------|--------|
+| hello kitty goes to space | 5 | 10 | cat |
+| top ten cat facts | 1 | 4 | cat |
+| how to pet a dog | 25 | 5 | ? |
+| alien vs lassie | 60 | 8 | dog |
+
+The table shows the title of the book, the number of times the word `dog` is mentioned, the number of times `cat` is mentioned and the current books class/label. We need to determine if `how to pet a dog` is a book about dogs or a book about cats. We tried to read it, but there were no doggy pictures in there so we gave up. Lets leave this to a machine. Now as we mentioned before, we can't visualize n-dimensional space but we can still conceptualize it and perform mathematical operations that scale to meet the number of dimensions. So you might be thinking `just take the bigger number` but I refer you again to the top trumps example from earlier, we need a solution that scales. This 2 dimensional example is just for illustration purposes.
+
+Alright Matilda, forget about the dinosaurs, and lets back to the books.
+
+We use the word frequencies to plot our points on a graph
+
+![pathofthedog5](/images/pathofthedog5.png)
+
+Using straight lines, we'll connect our mystery point to each of the other points, and essentially make a prediction based on the length of the line.
+
+![pathofthedog6](/images/pathofthedog6.png)
+
+| point|label|   distance |
+|---|--|--|
+|    0| cat |   20.615528|
+|    1| cat |  24.020824|
+|    3| dog  | 35.128336|
+
+Based on these results, we can see the nearest point is point 0 which if we check our table above, is labelled as `cat`. This is a *not* a good prediction ! Why would a book titled `how to pet a dog` be labelled as `cat`
+
+So what would have happened if we used cosine distance ?
+
+![pathofthedog7](/images/pathofthedog7.png)
+
+| point|label|   distance |
+|---|--|--|
+|    3| dog  | 0.002102|
+|    0| cat |   0.386059|
+|    1| cat |  0.571914|
+
+
+This looks good, the nearest point is point 3 which is labelled as `dog`. This means we did not have to stray far from the path of the dog to end up at our mystery point.
 
 ## Conclusion
-There are so many rabbit holes and tangents when it comes to even the most basic machine learning problem. Hopefully I haven't made things even more confusing. If nothing else, remember the path of the dog
+There are so many rabbit holes and tangents when it comes to even the most basic machine learning problem. Hopefully I haven't made things even more confusing. If nothing else, remember that in life `the path of the dog` is not always the way
 
 ![pathofthedog](/images/pathofthedog.png)
