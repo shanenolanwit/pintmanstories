@@ -122,7 +122,7 @@ then
     exit 1;
 fi
 
-echo "Deleting old publication"
+echo "Deleting old publications"
 rm -rf public
 mkdir public
 git worktree prune
