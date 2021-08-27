@@ -68,11 +68,11 @@ Using straight lines, we'll connect our mystery point to each of the sample poin
 
 ![pathofthedog3](/images/pathofthedog3.png)
 
-| point|label|   distance |
-| ---|--|--|
-|    4| young |   0.900000|
-|    0| mid |  6.888396|
-|    1| adult  | 11.669190|
+| point    | label | distance  |
+| -----------|-----------|------------|
+| 4 | young | 0.9 |
+| 0 | mid | 6.8 |
+| 1 | adult | 11.6 |
 
 Based on these results, we can see the nearest point is point 4 which if we check our table above, is labelled as 0 (young). This is a correct prediction !
 
