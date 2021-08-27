@@ -9,16 +9,15 @@ summary = "You must not stray from the path of the dog - ML 101"
 +++
 
 ## Introduction
-Do you often find yourself wondering what is the difference between euclidean distance and cosine distance? How many sleepless nights have you had trying to classify your books as either cat books or dog books? Do you have difficulty estimating a dogs age? Do you like vague quotes, badly phrased answers and reading python scripts Well then my friend, if the path be beautiful, let us not ask where it leads . . 
+Do you often find yourself wondering what is the difference between euclidean distance and cosine distance? How many sleepless nights have you had trying to classify your books as either cat books or dog books? Do you have difficulty estimating a dogs age? Do you like vague quotes, badly phrased answers and reading python scripts? Well then my friend, if the path be beautiful, let us not ask where it leads . . 
 ## Dimensional Chaos
-Don't listen to your friends when they tell you there is a single best way to calculate the distance between points in n-dimensional space. Depending on the problem, different measures will produce better results, and having the ability to pull these solutions our of your back pocket will serve you well. The following examples run through two scenarios, the first scenario details a problem where `euclidean` distance is the right solution, the second scenario details a problem where `cosine` distance is the correct solution. For all the maths and python code, I have my accompanying notebook stored[here](https://github.com/shanenolanwit/pintmanstories/blob/master/resources/notebooks/pathofthedog.ipynb)
+Don't listen to your friends when they tell you there is a single best way to calculate the distance between points in n-dimensional space. Depending on the problem, different measures will produce better results, and having the ability to pull these solutions out of your back pocket will serve you well. The following examples run through two scenarios, the first scenario details a problem where `euclidean` distance is the right solution, the second scenario details a problem where `cosine` distance is the correct solution. If you'd like to read the maths and python code, you can find my supplementary notebook stored [here](https://github.com/shanenolanwit/pintmanstories/blob/master/resources/notebooks/pathofthedog.ipynb)
 
-I'm not a mathematician, in fact, I had to use autocorrect to even spell mathematician so my definitions may not be textbook, but they might help you understand enough to go 
-research and understand the grown up definition.
+I'm not a mathematician, in fact, I had to use autocorrect to even spell mathematician, so my definitions may not be textbook, but they may interest you enough to do your own research and understand a more grown up definition.
 
 **Euclidean distance** is the `as the crow flies` distance between two points in space. If you grabbed your ruler and your pencil, and connected two points, the distance of that connecting line is your euclidean distance.
 
-**Cosine distance** measures the cosine of the angle between lines drawn from two given points to a common origin, or more simply put - given an origin how far do you have to stray from the path to one point to end up at the other. It is the great equalizer when the magnitude of a points values are not important.
+**Cosine distance** measures the cosine of the angle between lines drawn from two given points to a common origin, or more simply put - given an origin, how far do you have to stray from the path to one point to end up at the other. It is the great equalizer when the magnitude of a points values are not important.
 
 ![euccos](/images/euccos.png)
 
@@ -28,7 +27,7 @@ The above is a visual representation of euclidean distance (d) and cosine distan
 Sure look, you read it whatever way you want. Generally speaking a high cosine similarity score means two documents are similar, I've just subtracted the similarity score from 1 to give me the distance (or measure of how different they are). 
 
 ## Why not just look at points on a graph and kinda eyeball it
-Sounds good in theory, but this solution can only work in a 1 - 3 dimensional solution and can not scale. 
+Sounds good in theory, but this solution can only work in a 1 - 3 dimensional solution and cannot scale. 
 As simple humans we observe the world in 3 dimensional space, but in reality we encounter a lot of n-dimensional problems. Think of the last time you played Top Trumps - you can't judge a dinosaur by its *killer rating* alone, you need to factor in things like height, weight, length, intelligence and age. To plot these points on a graph you would need a 6 dimensional graph. We can do the maths but we simply can not display 6 dimensions in a 3 dimensional world. 
 
 ![toptrumps](/images/toptrumps.jpeg)
@@ -70,7 +69,7 @@ Using straight lines, we'll connect our mystery point to each of the sample poin
 ![pathofthedog3](/images/pathofthedog3.png)
 
 | point|label|   distance |
-|---|--|--|
+| ---|--|--|
 |    4| young |   0.900000|
 |    0| mid |  6.888396|
 |    1| adult  | 11.669190|
@@ -82,7 +81,7 @@ But what would have happened if we used cosine distance ?
 ![pathofthedog4](/images/pathofthedog4.png)
 
 | point|label|   distance |
-|---|--|--|
+| ---|--|--|
 |    1| adult  | 0.011186|
 |    4| young |   0.015582|
 |    0| mid |  0.018214|
@@ -92,7 +91,7 @@ We would have labelled our tiny dog as an adult ! The path from our origin to yo
 
 ## Chapter two - a day at the library
 
-So now you're thinking, `perfect, lettings throw this cosine distance stuff in the bin and just euclidean distance all the things`, but unfortunately you'd be in big trouble if you done that, because now you need to classify your book collection and euclidean distance is about to hit you hard. Lets take this sample book collection
+So now you're thinking, `perfect, lets throw this cosine distance stuff in the bin and just euclidean distance all the things`, but unfortunately you'd be in big trouble if you done that, because now you need to classify your book collection and euclidean distance is about to hit you hard. Lets take this sample book collection:
 
 | document    | dog count | cat count  | label |
 | -----------|-----------|------------|--------|
@@ -114,14 +113,14 @@ Using straight lines, we'll connect our mystery point to each of the other point
 ![pathofthedog6](/images/pathofthedog6.png)
 
 | point|label|   distance |
-|---|--|--|
+| ---|--|--|
 |    0| cat |   20.615528|
 |    1| cat |  24.020824|
 |    3| dog  | 35.128336|
 
-Based on these results, we can see the nearest point is point 0 which if we check our table above, is labelled as `cat`. This is a *not* a good prediction ! Why would a book titled `how to pet a dog` be labelled as `cat`
+Based on these results, we can see the nearest point is point 0 which if we check our table above, is labelled as `cat`. This is *not* a good prediction ! Why would a book titled `how to pet a dog` be labelled as `cat`?
 
-So what would have happened if we used cosine distance ?
+So what would have happened if we had used cosine distance instead?
 
 ![pathofthedog7](/images/pathofthedog7.png)
 
@@ -135,6 +134,6 @@ So what would have happened if we used cosine distance ?
 This looks good, the nearest point is point 3 which is labelled as `dog`. This means we did not have to stray far from the path of the dog to end up at our mystery point.
 
 ## Conclusion
-There are so many rabbit holes and tangents when it comes to even the most basic machine learning problem. Hopefully I haven't made things even more confusing. If nothing else, remember that in life `the path of the dog` is not always the way
+There are so many rabbit holes and tangents when it comes to even the most basic machine learning problem. Hopefully I haven't made things even more confusing. If nothing else, remember that in life `the path of the dog` is not always the way.
 
 ![pathofthedog](/images/pathofthedog.png)
