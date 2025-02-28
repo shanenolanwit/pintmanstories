@@ -1,0 +1,109 @@
++++
+title = "The era of LLM Script Kiddies"
+date = 2025-02-27T23:31:09Z
+author = "Shane Nolan"
+keywords = ["", ""]
+cover = "/images/avatar.png"
+summary = "Flavour of the month - LLM Opinions"
+
++++
+## My 3 cents
+
+Everyone these days has an opinion on Large Language Models (LLMs) and the threat they pose to development teams. Here’s mine: in the short term, I agree that they’re disrupting how we code. But soon, the walls will crumble. The term “script kiddie” is usually reserved for someone who uses hacking tools without understanding how they work. But now, we have a new breed: the LLM script kiddie. They copy and paste code without understanding it, and they don’t know how to optimize it, or fix it when it breaks. Well, some day soon something will break, and they’ll realize: maybe we shouldn’t have let the magic chatgpt fairies do *everything*.
+
+Code that requires manual intervention, addressing general vulnerabilities, zero-day attacks, performance tuning, edge cases, obscure tweaks etc, will be left untouched because no one will know how to fix it.
+
+Junior developers (and plenty of non-technical users) are all too eager to copy and paste whatever comes out of ChatGPT without stopping to ask:
+
+- Is this actually correct?
+- Is it the best way to do this?
+- Is it secure?
+- How do I test it?
+- What happens if it breaks?
+
+That’s a lot of important questions to ignore.
+
+---
+
+## So, how do we fix this?
+
+### 1. Pair Programming  
+Junior devs (or non-devs) should be regularly paired with seniors who actually *read* documentation, carefully modify existing solutions, and know that "it runs" isn’t the same as "it works."
+
+### 2. Limit AI Access  
+Giving a new hire full access to your enterprise Copilot and ChatGPT accounts on day one is asking for trouble. Maybe hold off until they’ve survived probation.
+
+### 3. Be Strict with PRs  
+Reviews shouldn’t be rubber-stamped. Question all the things. If a PR looks suspiciously AI-generated, push back. If the author can’t explain it, reject it. 
+
+*“Why did you do it *this* way?”* is an underrated question.
+
+### 4. Better Hiring Practices  
+- Take-home exercises? You have to ask them to explain their code. If they can’t, they’re not a good fit.
+- Video interviews? Watch for telltale signs of AI assistance. Eyes darting to the side, long pauses, or sudden bursts of code and textbook answers.
+
+---
+
+## Wow Shane. So you don't use LLMs?
+
+Of course I do. I used ChatGPT to write the first draft of this post. And I use Copilot to generate boilerplate code all the time. But I also know when to stop and think. I know when to ask for help. I know when to say, *“This is wrong.”* To me, copying and pasting code without understanding it is no different from copying and pasting a Wikipedia article into an academic paper. It could be out of date, it could be bias, it could be poor quality, or it could just be complete horseshit.
+
+AI is a great assistant, but that’s all it is—an *assistant*, not a replacement. If you don’t know how to fact-check what AI gives you, you’re playing a dangerous game.  
+
+Let’s prove it with an example.  
+
+---
+
+## A Simple String Manipulation Problem
+
+Say we need to extract the domain name from a given URL string in **Node.js**, while handling edge cases like subdomains and query parameters.
+
+I asked a popular LLM for a solution. Here’s what it gave me:
+
+```javascript
+function getDomain(url) {
+    const match = url.match(/^https?:\/\/(www\.)?([^\/]+)/);
+    return match ? match[2] : null;
+}
+
+console.log(getDomain("https://sub.example.com/page?query=123")); // Expected: "example.com", but returns "sub.example.com"
+```
+
+What’s Wrong?
+
+- The regex incorrectly includes subdomains (e.g., sub.example.com instead of example.com).
+- It doesn’t handle edge cases like http://localhost:3000 or https://example.co.uk.
+- Hardcoding (www\.)? is unreliable since not all domains use www.
+
+The Correct Solution? Read the Docs
+
+Instead of fighting with regex, let’s use the built-in URL API from Node.js:
+```javascript
+function getDomain(url) {
+    try {
+        let hostname = new URL(url).hostname;
+        let parts = hostname.split('.');
+
+        // If domain has more than two parts (e.g., sub.example.com), return only last two
+        return parts.length > 2 ? parts.slice(-2).join('.') : hostname;
+    } catch (error) {
+        return null; // Invalid URL
+    }
+}
+
+console.log(getDomain("https://sub.example.com/page?query=123")); // Correct: "example.com"
+console.log(getDomain("http://localhost:3000")); // Correct: "localhost"
+console.log(getDomain("https://example.co.uk")); // Correct: "example.co.uk"
+```
+
+Instead of inventing bad regex, we use the standard URL API and extract the correct domain reliably. This is the difference between blindly copying code and understanding the problem. And this is coming from someone who has an unhealthy obsession with regex.
+
+## Conclusion
+
+AI-generated code can be useful, but it can also be dangerously wrong in subtle ways. If you don’t read the docs and understand why something works, you’re setting yourself up for failure.
+
+So next time you paste a code snippet from ChatGPT, ask yourself:
+- Do I actually understand this?
+- Is there a built-in function that does this better?
+- If this breaks in production, will I know how to fix it?
+
